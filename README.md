@@ -52,7 +52,7 @@ Esse projeto envolve três etapas principais:
 
 ## Vídeo:
 
-Vídeo do sistema em uso: [Galton Board - Semana 8 - Embarcatech 2025 2º Fase](https://www.youtube.com/watch?v=iCuJRc8VhTc&feature=youtu.be)
+Vídeo do sistema em uso: [Sintetizador de Áudio - Semana 12 - Embarcatech 2025 2º Fase](https://youtu.be/-HTQUAR7dj8?si=ogHd5ttZc0YIbw21)
 
 
 ---
