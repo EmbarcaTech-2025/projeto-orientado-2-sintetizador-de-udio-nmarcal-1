@@ -45,7 +45,8 @@ Esse projeto envolve três etapas principais:
 
 ## Componentes:
 
-![componentes_Galton_Board](https://github.com/EmbarcaTech-2025/lab01_galton_board-nmarcal/blob/061cf471ceaa03de75cc0a1d5c6e7479a0b51f4d/assets/lista_componentes1.jpg?raw=true)
+![componentes_1_synth_audio](https://github.com/EmbarcaTech-2025/projeto-orientado-2-sintetizador-de-udio-nmarcal-1/blob/8a0dfd52aee6009d60af168650bb7425759e68d8/assets/imagem_componentes_1_synth_audio.jpg?raw=true)
+![componentes_2_synth_audio](https://github.com/EmbarcaTech-2025/projeto-orientado-2-sintetizador-de-udio-nmarcal-1/blob/ce4ed4efc0b78f8a8ee08ef2b52a4509a78212fb/assets/imagem_componentes_2_synth_audio.jpg?raw=true)
 
 ---
 
