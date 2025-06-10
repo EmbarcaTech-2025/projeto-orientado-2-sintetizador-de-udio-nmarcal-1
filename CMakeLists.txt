@@ -34,36 +34,52 @@ project(synth_audio C CXX ASM)
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
-add_executable( synth_audio
-  main.c
+add_executable(synth_audio
+  synth_audio.c
+  # Adicione aqui outros arquivos fonte se necessário
 )
 
 pico_set_program_name(synth_audio "synth_audio")
 pico_set_program_version(synth_audio "0.1")
 
-# Modify the below lines to enable/disable output over UART/USB
+# Configuração de saída padrão
 pico_enable_stdio_uart(synth_audio 0)
 pico_enable_stdio_usb(synth_audio 1)
 
-# Add the standard library to the build
-target_link_libraries(synth_audio
-        # Biblioteca padrão do Pico SDK, que fornece funções básicas para o RP2040 (GPIO, temporizadores, UART, etc.).
-        pico_stdlib
-        )
-
-# Add the standard include files to the build
+# Inclui diretórios adicionais
 target_include_directories(synth_audio PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-        ${CMAKE_CURRENT_LIST_DIR}/include
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/include
 )
 
-# Add any user requested libraries
-target_link_libraries(synth_audio 
-        hardware_adc
-        hardware_dma
-        hardware_pwm
+# Bibliotecas necessárias para o projeto
+target_link_libraries(synth_audio
+    pico_stdlib                   # Biblioteca padrão do Pico SDK
+    hardware_adc                  # Para leitura do microfone via ADC
+    hardware_pwm                  # Para saída de áudio via PWM
+    hardware_i2c                  # Para comunicação com o display OLED
+    hardware_dma                  # Opcional: para transferência eficiente de dados
+    pico_cyw43_arch_none          # Para suporte ao WiFi (se usando Pico W)
 )
 
+# Adiciona arquivos de cabeçalho do display OLED
+target_sources(synth_audio PRIVATE
+    # ${CMAKE_CURRENT_LIST_DIR}/include/ssd1306.c
+    ${CMAKE_CURRENT_LIST_DIR}/include/ssd1306_i2c.c
+)
+
+# Configurações adicionais para otimização (opcional)
+target_compile_options(synth_audio PRIVATE
+    -O2                           # Otimização para melhor desempenho
+    -Wall                         # Habilita todos os avisos
+)
+
+# Gera arquivos adicionais (UF2, HEX, etc.)
 pico_add_extra_outputs(synth_audio)
 
+# Configuração específica para Pico W (se necessário)
+#if(PICO_BOARD STREQUAL "pico_w")
+#    target_link_libraries(synth_audio
+#        pico_cyw43_arch_none      # Arquitetura para o chip WiFi
+#    )
+#endif()
